@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📚 Bookstore Checkout</title>
+  <style>
+    body {
+       font-family: Arial, sans-serif;
+       margin: 20px;
+       background: #f4f4f9;
+    }
+    .container { 
+       max-width: 700px; 
+       margin: auto; 
+    }
+    .card { 
+       border: 1px solid #ccc; 
+       margin: 15px 0;
+       border-radius: 8px; 
+       background: white;
+    }
+    .card-header { 
+       padding: 15px; 
+       cursor: pointer; 
+       display: flex; 
+       justify-content: space-between; 
+       align-items: center;
+    }
+    .card-header:hover { 
+       background: #f0f0f0; 
+    }
+    .card-content { 
+       display: none; 
+       padding: 15px; 
+       border-top: 1px solid #ddd; 
+    }
+    .active .card-content { 
+       display: block; 
+    }
+    .active .card-header { 
+       background: #fffae6; 
+    }
+    button { 
+       padding: 10px 20px; 
+       border: none; 
+       background: #ff9900; 
+       color: white; 
+       border-radius: 5px; 
+       cursor: pointer; 
+    }
+    button:hover { 
+       background: #e68a00; 
+    }
+    input { 
+       padding: 8px; 
+       margin: 5px 0; 
+       width: 95%; 
+    }
+    .required-star{
+       color: red;
+    }   
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 >Select payment method :-</h1>
+    <div class="card">
+      <div class="card-header" onclick="togglePayment(this)">
+        <span>💳 Credit / Debit Card</span>
+        <span>➕</span>
+      </div>
+      <div class="card-content">
+        <h2>Payment Form</h2>
+
+         <label>Card Number</label><span class="required-star">*</span></label><br>
+         <input type="text" id="cardNumber" maxlength="19" placeholder="card number" oninput="formatCardNumber(this);detectCardType(this.value);" required >
+         <br><br>
+
+         <label>Expiry Date (MM/YY)</label><span class="required-star">*</span></label><br>
+         <input type="text" id="expiryDate" maxlength="5" placeholder="MM/YY" oninput="formatExpiry(this)"required/>
+         <br><br>
+
+         <label>CVV</label><span class="required-star">*</span></label><br>
+         <input type="password" id="cvv" maxlength="3" placeholder="123" oninput="this.value = this.value.replace(/\D/g,'')" required
+         />
+         <br><br>
+         <button onclick="payNow('card')">Pay Now</button>        
+      </div>
+    </div> 
+
+    <div class="card">
+      <div class="card-header" onclick="togglePayment(this)">
+        <span>📱 UPI</span>
+        <span>➕</span>
+      </div>
+      <div class="card-content">
+        <input type="text" placeholder="Enter UPI ID (e.g. name@upi)"><br>
+        <button onclick="confirmPayment('UPI')">Pay Now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="togglePayment(this)">
+        <span>🏦 Net Banking</span>
+        <span>➕</span>
+      </div>
+      <div class="card-content">
+        <select>
+          <option>Select Bank</option>
+          <option>SBI</option>
+          <option>HDFC</option>
+          <option>ICICI</option>
+          <option>Axis</option>
+        </select><br>
+        <button onclick="confirmPayment('Net Banking')">Pay Now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" onclick="togglePayment(this)">
+        <span>🚚 Cash on Delivery</span>
+        <span>➕</span>
+      </div>
+      <div class="card-content">
+        <p>Pay with cash once your book is delivered.</p>
+        <button onclick="confirmPayment('Cash on Delivery')">Confirm Order</button>
+      </div>
+    </div>
+  </div>
+  <script>
+   function togglePayment(element) {
+      let card = element.parentElement;
+  
+       // If already active → close it
+      if (card.classList.contains('active')) {
+        card.classList.remove('active');
+      } else {
+       // Close all other cards
+        document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+       // Open the clicked card
+        card.classList.add('active');
+      }
+    }
+  // 🟢 Auto space card number
+  function formatCardNumber(input) {
+    let value = input.value.replace(/\D/g, "");
+    input.value = value.replace(/(\d{4})(?=\d)/g, "$1 ");
+  }
+  function detectCardType(number) {
+    number = number.replace(/\s/g,''); // remove spaces
+    let icon = document.getElementById("cardIcon");
+
+    if(/^4/.test(number)) {           // Visa starts with 4
+      icon.src = "https://img.icons8.com/color/48/000000/visa.png";
+      icon.style.display = "block";
+    } 
+    else if(/^5[1-5]/.test(number)) { // MasterCard starts with 51-55
+      icon.src = "https://img.icons8.com/color/48/000000/mastercard-logo.png";
+      icon.style.display = "block";
+    } 
+    else if(/^6/.test(number)) {      // Example RuPay starts with 6
+      icon.src = "https://upload.wikimedia.org/wikipedia/commons/1/1c/RuPay_logo.svg";
+      icon.style.display = "block";
+    }
+    else {
+      icon.style.display = "none"; // Unknown
+    }
+  }
+
+  // 🟢 Auto format expiry date
+  function formatExpiry(input) {
+    let value = input.value.replace(/\D/g, ""); // remove non-digits
+    if(value.length > 2) {
+      value = value.substring(0,2) + "/" + value.substring(2,4);
+    }
+    input.value = value;
+  }
+
+  // 🟢 Validation before redirect
+  function payNow(method) {
+    let card = document.getElementById("cardNumber").value.replace(/\s/g,'');
+    let expiry = document.getElementById("expiryDate").value;
+    let cvv = document.getElementById("cvv").value;
+
+    // Card validation
+    if(card.length !== 16) {
+      alert("⚠️ Enter valid 16-digit card number");
+      return;
+    }
+
+    // Expiry validation MM/YY
+    if(!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiry)) {
+      alert("⚠️ Enter valid expiry date MM/YY");
+      return;
+    }
+
+    // CVV validation
+    if(cvv.length !== 3) {
+      alert("⚠️ Enter valid 3-digit CVV");
+      return;
+    }
+    alert("✅ Payment Successful via " + method + "!");
+    window.location.href ="last.html";
+  }
+   function confirmPayment(method) {
+      alert("✅ Payment Successful via " + method + "!");
+      window.location.href = "last.html";
+    }
+</script>
+  
+</body>
+</html>

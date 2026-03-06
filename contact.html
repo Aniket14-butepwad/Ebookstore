@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - MyBookStore</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: rgb(232, 242, 215);
+      margin: 0;
+      padding: 0;
+    }
+     header {
+             text-align: center;
+             padding: 15px;
+             background: rgb(22, 22, 194);
+             position: relative;
+        }
+        header img {
+             position: absolute;
+             left: 20px;
+             top: 15px;
+             width: 150px;
+             height: auto;
+        }
+        header h1 {
+             margin: 0;
+             font-size: 70px;
+             color:white;
+             text-shadow: 4px 3px rgb(33, 0, 33);
+        }
+        .search-box {
+             margin-top: 10px;
+        } 
+        .search-box input {
+             padding: 8px;
+             width: 550px;
+             height: 15px;
+        }
+        .search-box button {
+             padding: 8px 12px;
+        }
+    nav {
+      background-color: #0059b3;
+      padding: 10px;
+      text-align: center;      
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    /* Contact Section */
+    section {
+      flex: 2;
+      margin: 10px;
+      border-radius: 10px;
+      padding: 30px;
+      margin-left: 500px;
+      margin-right: 500px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: darkblue;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    label {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      resize: vertical;
+    }
+
+    textarea {
+      min-height: 120px;
+    }
+
+    input[type="submit"] {
+      width: 150px;
+      padding: 10px;
+      font-size: 18px;
+      border-radius: 5px;
+      border: none;
+      background-color: darkblue;
+      color: white;
+      cursor: pointer;
+      align-self: center;
+      transition: background 0.3s;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0059b3;
+    }
+
+    /* Contact Info */
+    .contact-info {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .contact-info p {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    /* Footer */
+    footer {
+      background-color: darkblue;
+      margin-top: 0px;
+      margin-bottom: 0px;
+      padding: 10px;
+      text-align: center;
+      color: white;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <img src="images/logo1.png" alt="" height="170px">
+    <h1>MyBookStore</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="categories.html">Categories</a>
+    <a href="best_sellers.html">Best Sellers</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <!-- Contact Section -->
+  <section>
+    <h2>Contact Us</h2>
+    <form action="#" method="post">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <label for="subject">Subject:</label>
+      <input type="text" id="subject" name="subject" placeholder="Enter subject" required>
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+
+      <input type="submit" value="Send Message">
+    </form>
+
+    <div class="contact-info">
+      <p>Email: <a href="mailto:mybookstore@gmail.com">mybookstore@gmail.com</a></p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Address: 123 Book Street, Pune, Maharashtra, India</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>Contact: <a href="#">mybookstore@gmail.com</a> | Follow us on @mybookstore2025</p>
+    <p>© 2025 MyBookStore</p>
+  </footer>
+
+</body>
+</html>

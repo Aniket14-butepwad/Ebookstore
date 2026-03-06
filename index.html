@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebookstore | Premium Reader Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent: #6366f1;
+            --accent-dark: #4338ca;
+            --bg-light: #f8fafc;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+        }
+
+        * { box-sizing: border-box; transition: all 0.3s ease; }
+
+        body {
+            background-color: var(--bg-light);
+            margin: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-dark);
+        }
+
+        /* --- BIG LOGO & HEADER --- */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 6%;
+            display: flex;
+            flex-direction: column; /* Stacked for a grander look */
+            align-items: center;
+            gap: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        @media (min-width: 900px) {
+            header { flex-direction: row; justify-content: space-between; }
+        }
+
+        .logo-container img {
+            height: 100px; /* INCREASED SIZE */
+            width: auto;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+        }
+
+        .search-box {
+            display: flex;
+            background: #f1f5f9;
+            border-radius: 15px;
+            padding: 5px 5px 5px 20px;
+            width: 100%;
+            max-width: 500px;
+            border: 2px solid transparent;
+        }
+
+        .search-box:focus-within { border-color: var(--accent); background: #fff; }
+
+        .search-box input {
+            border: none; background: none; outline: none; width: 100%; font-family: inherit;
+        }
+
+        .search-box button {
+            background: var(--accent); color: white; border: none;
+            padding: 12px 25px; border-radius: 12px; font-weight: 700; cursor: pointer;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background: var(--text-dark);
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #94a3b8; text-decoration: none; margin: 0 20px;
+            font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 1px;
+        }
+
+        nav a:hover { color: #fff; }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 80px 10%;
+            background: linear-gradient(135deg, #e0e7ff 0%, #ffffff 100%);
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            overflow: hidden;
+        }
+
+        .hero-text { flex: 1; }
+        .hero-text h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 20px; }
+        .hero-text p { font-size: 1.2rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 30px; }
+
+        /* --- CATEGORY CHIPS --- */
+        .categories-sec { padding: 60px 10%; text-align: center; }
+        .cat-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 30px; }
+        .cat-card {
+            padding: 20px 40px; background: #fff; border-radius: 20px;
+            text-decoration: none; color: var(--text-dark); font-weight: 700;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); border: 1px solid #e2e8f0;
+        }
+        .cat-card:hover { background: var(--accent); color: #fff; transform: translateY(-5px); }
+
+        /* --- WHY CHOOSE US (RE-ADDED & IMPROVED) --- */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 80px 10%;
+            background: #fff;
+        }
+
+        .feature-item {
+            text-align: center; padding: 40px; border-radius: 30px;
+            background: var(--bg-light);
+        }
+
+        .feature-item span { font-size: 50px; display: block; margin-bottom: 20px; }
+        .feature-item h3 { margin-bottom: 10px; }
+
+        /* --- BEST SELLERS GRID --- */
+        .books-sec { padding: 80px 10%; }
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .book-card {
+            background: #fff; padding: 20px; border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .book-card img {
+            width: 100%; height: 350px; object-fit: cover;
+            border-radius: 20px; margin-bottom: 20px;
+        }
+
+        .book-card h3 { margin: 10px 0; font-size: 1.2rem; }
+        .book-card .author { color: var(--text-muted); font-size: 0.9rem; }
+        
+        .buy-row {
+            display: flex; justify-content: space-between; align-items: center; margin-top: 20px;
+        }
+
+        .price { font-size: 1.5rem; font-weight: 800; color: var(--accent); }
+        .buy-btn {
+            background: var(--text-dark); color: #fff; border: none;
+            padding: 10px 20px; border-radius: 12px; cursor: pointer; font-weight: 600;
+        }
+        .buy-btn:hover { background: var(--accent); }
+
+        footer {
+            background: var(--text-dark); color: #94a3b8;
+            padding: 80px 10% 40px; text-align: center;
+        }
+        footer a { color: #fff; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Ebookstore Logo">
+        </div>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search 50,000+ titles...">
+            <button onclick="goToSearch()">Search</button>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="categories.html">Categories</a>
+        <a href="best_sellers.html">Best-Sellers</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Welcome to the <br><span style="color: var(--accent)">Future of Reading</span></h1>
+            <p>
+                At Ebookstore, we believe books are gateways to knowledge and inspiration. 
+                Whether you're a student, a professional, or a casual reader, we've curated 
+                a selection that brings the world's wisdom right to your doorstep.
+            </p>
+            <button class="buy-btn" style="padding: 15px 40px; font-size: 1.1rem;">Start Your Journey</button>
+        </div>
+        <div style="flex: 1; text-align: right;" class="hero-img">
+            <img src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&q=80&w=800" 
+                 style="width: 100%; border-radius: 30px; box-shadow: 0 30px 60px rgba(0,0,0,0.1);" alt="Bookshelf">
+        </div>
+    </section>
+
+    <section class="categories-sec">
+        <h2>Browse by Category</h2>
+        <div class="cat-container">
+            <a href="#" class="cat-card">Fiction</a>
+            <a href="#" class="cat-card">Science</a>
+            <a href="#" class="cat-card">History</a>
+            <a href="#" class="cat-card">Comics</a>
+            <a href="#" class="cat-card">Biography</a>
+            <a href="#" class="cat-card">Self-Help</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-item">
+            <span>📚</span>
+            <h3>Wide Collection</h3>
+            <p>From classics to trending new releases across all genres.</p>
+        </div>
+        <div class="feature-item">
+            <span>🚚</span>
+            <h3>Fast Delivery</h3>
+            <p>Safe and secure shipping to your doorstep within 48 hours.</p>
+        </div>
+        <div class="feature-item">
+            <span>🌟</span>
+            <h3>Trusted by Readers</h3>
+            <p>Join our community of over 50,000 active readers worldwide.</p>
+        </div>
+    </section>
+
+    <section class="books-sec">
+        <h2 style="margin-bottom: 40px;">Weekly Best-Sellers</h2>
+        <div class="book-grid">
+            <div class="book-card">
+                <img src="images/b16.jpg" alt="Book">
+                <h3>Think and Grow Rich</h3>
+                <p class="author">by Napoleon Hill</p>
+                <div class="buy-row">
+                    <span class="price">₹399</span>
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+            </div>
+            <div class="book-card">
+                <img src="images/b7.jpg" alt="Book">
+                <h3>Theory of Everything</h3>
+                <p class="author">by Stephen Hawking</p>
+                <div class="buy-row">
+                    <span class="price">₹399</span>
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+            </div>
+            <div class="book-card">
+                <img src="images/b1.jpg" alt="Book">
+                <h3>Harry Potter</h3>
+                <p class="author">by J.K. Rowling</p>
+                <div class="buy-row">
+                    <span class="price">₹399</span>
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+            </div>
+            <div class="book-card">
+                <img src="images/b3.jpg" alt="Book">
+                <h3>The God of Small Things</h3>
+                <p class="author">by Arundhati Roy</p>
+                <div class="buy-row">
+                    <span class="price">₹399</span>
+                    <button class="buy-btn">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div style="margin-bottom: 30px;">
+            <h2 style="color: #fff;">Ebookstore.</h2>
+            <p>Your ultimate destination for literary excellence.</p>
+        </div>
+        <p>Contact: <a href="mailto:support@ebookstore.com">support@ebookstore.com</a> | Follow us @ebookstore2026</p>
+        <p style="margin-top: 20px; font-size: 13px; opacity: 0.5;">© 2026 Ebookstore. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function goToSearch() {
+            let query = document.getElementById("searchInput").value.trim();
+            if(query !== "") {
+                window.location.href = "search_results.html?q=" + encodeURIComponent(query);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Bookstore - Best Sellers</title>
+</head>
+<body>
+    <style>
+        body{
+            background-color: rgb(229, 248, 194);
+            margin: 0px;
+            font-family: Arial, sans-serif;
+        }
+         header {
+             text-align: center;
+             padding: 15px;
+             background: rgb(22, 22, 194);
+             position: relative;
+        }
+        header img {
+             position: absolute;
+             left: 20px;
+             top: 15px;
+             width: 150px;
+             height: auto;
+        }
+        header h1 {
+             margin: 0;
+             font-size: 70px;
+             color:white;
+             text-shadow: 4px 3px rgb(33, 0, 33);
+        }
+        .search-box {
+             margin-top: 10px;
+        } 
+        .search-box input {
+             padding: 8px;
+             width: 550px;
+             height: 15px;
+        }
+        .search-box button {
+             padding: 8px 12px;
+        }
+        nav {
+            background-color: #0059b3;
+            padding: 10px;
+            text-align: center;      
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        section{
+             flex: 2;
+             padding: 20px;
+             background-color: white;
+             margin: 10px;
+             border-radius: 10px;
+             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1{
+            font-size: 35px;
+            color: darkblue;
+            
+        }
+        .book-container{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 30px;
+        }
+        .book-card{
+            background-color: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .book-card:hover{
+            transform: scale(1.05);
+        }
+        .book-card img{
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .book-card h3{
+            font-size: 20px;
+            margin: 10px 0 5px;
+        }
+        .author{
+            font-size: 16px;
+            color: gray;
+        }
+        .price{
+            font-size: 18px;
+            font-weight: bold;
+            color: green;
+        }
+        .rating{
+            color: orange;
+            margin: 5px 0;
+        }
+        .buy{
+            cursor: pointer;
+            background-color: blue;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover{
+            background-color: #003366;
+        }
+        footer{
+            background-color: darkblue;
+            text-align: center;
+            color: white;
+            padding: 15px;
+        }
+        footer a{
+            color: yellow;
+            text-decoration: none;
+        }
+    </style>
+
+    <!-- Header -->
+    <header>
+        <img src="images/logo1.png" alt=" " height="175px">
+        <h1 > Mybookstore</h1>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search books...">
+            <button  onclick="goToSearch()">Search</button>
+        </div>
+    </header>
+
+    <script>
+      function goToSearch() {
+        let query = document.getElementById("searchInput").value.trim();
+        if(query !== "") {
+        // Redirect to search-results.html with query as URL parameter
+            window.location.href = "search_results.html?q=" + encodeURIComponent(query);
+        }
+    }
+    </script>
+
+
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="categories.html">Categories</a>
+        <a href="best_sellers.html">Best-Sellers</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Best Sellers Section -->
+    <section>
+        <h1>About our Best-Selling Books :-</h1>
+        <p style="font-size: 20px;margin: 0 auto;color:black;">
+              The **Best-Selling Books** section of our bookstore is a treasure for every reader who wishes to explore the most loved titles of all time. These books are not only popular but also hold the power to inspire, entertain, and transform lives. From timeless classics that never lose their charm to modern masterpieces that have quickly captured the hearts of millions, every title here carries a story worth reading. Some of these books will guide you with life lessons, some will motivate you toward success, and others will take you on thrilling adventures full of imagination. Each book has been recommended and celebrated by readers across the world, making it a trusted choice for anyone who values knowledge and creativity. You will find a variety of genres here including self-improvement, finance, history, motivation, and gripping fiction, ensuring there is something for everyone. The characters, ideas, and lessons within these books have made them unforgettable, and they continue to influence people of all ages. Whether you are just starting your reading journey or you are already a passionate book lover, these best-sellers will add incredible value to your bookshelf. They also make excellent gifts for friends and family who appreciate wisdom and creativity. Our best-seller list is updated regularly to include both classic favorites and trending new arrivals, so you always stay connected with the world’s most impactful stories. Dive into this collection, choose your next read, and discover why these books are celebrated everywhere. Your journey with knowledge, imagination, and inspiration begins right here in our **Best-Selling Books Collection**.
+        </p>
+    </section>
+    <section style="background-color: rgb(215, 211, 211);">
+        <h1>🔥 Best-Selling Books :-</h1>
+        <div class="book-container">
+            
+            <!-- Card 1 -->
+            <div class="book-card">
+                <img src="images/b1.jpg" alt="Book 1" >
+                <h3>Harry pootter</h3>
+                <p class="author">by J.K.Rowling</p>
+                <p class="price">₹399</p>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <form action="checkout.html">
+                <button class="buy" type="submit">Buy Now</button>
+                </form>
+            </div>
+            <div class="book-card">
+                <img src="images/b2.jpg" alt="Book 1" >
+                <h3>The Pallace of Illusion</h3>
+                <p class="author">by Chitra Banerjee</p>
+                <p class="price">₹399</p>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <form action="checkout.html">
+                <button  class="buy" type="submit">Buy Now</button>
+                </form>
+            </div>
+            <div class="book-card">
+                <img src="images/b3.jpg" alt="Book 1" >
+                <h3>The God of Small Things</h3>
+                <p class="author">by Arundhati Roy</p>
+                <p class="price">₹399</p>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <form action="checkout.html">
+                <button  class="buy" type="submit">Buy Now</button>
+                </form>
+            </div>
+            <div class="book-card">
+                <img src="images/b4.jpg" alt="Book 1" >
+                <h3>The Midnight Childern</h3>
+                <p class="author">by Dan Gemeinhart</p>
+                <p class="price">₹399</p>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <form action="checkout.html">
+                <button  class="buy" type="submit">Buy Now</button>
+                </form>
+            </div>
+            <div class="book-card">
+                <img src="images/b5.jpg" alt="Book 1" >
+                <h3>The White tiger </h3>
+                <p class="author">by Aravind Adiga</p>
+                <p class="price">₹399</p>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <form action="checkout.html">
+                <button  class="buy" type="submit">Buy Now</button>
+                </form>
+            </div>
+            <div class="book-card">
+                <img src="images/b6.jpg" alt="Book 1" >
+                <h3>Sapiens</h3>
+                <p class="author">by Yuval Harrari</p>
+                <p class="price">₹399</p>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <form action="checkout.html">
+                <button  class="buy" type="submit">Buy Now</button>
+                </form>
+            </div>
+            <div class="book-card">
+                <img src="images/b7.jpg" alt="Book 1" >
+                <h3>Theory of Everything</h3>
+                <p class="author">by Stephen W. Halking</p>
+                <p class="price">₹399</p>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <form action="checkout.html">
+                <button  class="buy" type="submit">Buy Now</button>
+                </form>
+            </div>
+            <div class="book-card">
+                <img src="images/b8.jpg" alt="Book 1" >
+                <h3>Bhagwad geeta</h3>
+                <p class="author">by A.C. BhaktiVedanta Swami Prabhupada</p>
+                <p class="price">₹399</p>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <form action="checkout.html">
+                <button  class="buy" type="submit">Buy Now</button>
+                </form>
+            </div>
+            <div class="book-card">
+                <img src="images/b9.jpg" alt="Book 1" >
+                <h3>The Divine Comedy</h3>
+                <p class="author">by Dantie Alighieri</p>
+                <p class="price">₹399</p>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <form action="checkout.html">
+                <button  class="buy" type="submit">Buy Now</button>
+                </form>
+            </div>
+            <div class="book-card">
+                <img src="images/b10.jpg" alt="Book 1" >
+                <h3>The Discovery of India</h3>
+                <p class="author">by Jawarlal Nehru</p>
+                <p class="price">₹399</p>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <form action="checkout.html">
+                <button  class="buy" type="submit">Buy Now</button>
+                </form>
+            </div>
+            <div class="book-card">
+                <img src="images/b11.jpg" alt="Book 1" >
+                <h3>The Constitution of India</h3>
+                <p class="author"></p>
+                <p class="price">₹399</p>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <form action="checkout.html">
+                <button  class="buy" type="submit">Buy Now</button>
+                </form>
+            </div><div class="book-card">
+                <img src="images/b12.jpg" alt="Book 1" >
+                <h3>An Era of Darkness</h3>
+                <p class="author">by shashi Tharoor</p>
+                <p class="price">₹399</p>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <form action="checkout.html">
+                <button  class="buy" type="submit">Buy Now</button>
+                </form>
+            </div>
+            <div class="book-card">
+                <img src="images/b13.jpg" alt="Book 1" >
+                <h3>Atomic Habits</h3>
+                <p class="author">by James Clear</p>
+                <p class="price">₹399</p>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <form action="checkout.html">
+                <button  class="buy" type="submit">Buy Now</button>
+                </form>
+            </div>
+            <div class="book-card">
+                <img src="images/b14.jpg" alt="Book 1" >
+                <h3>The 7 habits of highly effective people</h3>
+                <p class="author">by Alex Michaelides</p>
+                <p class="price">₹399</p>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <form action="checkout.html">
+                <button  class="buy" type="submit">Buy Now</button>
+                </form>
+            </div>
+            <div class="book-card">
+                <img src="images/b15.jpg" alt="Book 1" >
+                <h3>The Power of Now</h3>
+                <p class="author">by Eckhart Tolle</p>
+                <p class="price">₹399</p>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <form action="checkout.html">
+                <button  class="buy" type="submit">Buy Now</button>
+                </form>
+            </div>
+            <div class="book-card">
+                <img src="images/b16.jpg" alt="Book 1" >
+                <h3>Think Grow and Rich</h3>
+                <p class="author">by Napolien Hill</p>
+                <p class="price">₹399</p>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <form action="checkout.html">
+                <button  class="buy" type="submit">Buy Now</button>
+                </form>
+            </div>
+            <div class="book-card">
+                <img src="images/b17.jpg" alt="Book 1" >
+                <h3>The Gene</h3>
+                <p class="author">by Sidharata Mukherjee</p>
+                <p class="price">₹399</p>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <form action="checkout.html">
+                <button  class="buy" type="submit">Buy Now</button>
+                </form>
+            </div>
+            <div class="book-card">
+                <img src="images/b18.jpg" alt="Book 1" >
+                <h3>Shri Rama and Sita</h3>
+                <p class="author">the stroy behind Diwali for childern </p>
+                <p class="price">₹399</p>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <form action="checkout.html">
+                <button  class="buy" type="submit">Buy Now</button>
+                </form>
+            </div>
+            <div class="book-card">
+                <img src="images/b19.jpg" alt="Book 1" >
+                <h3>The last Mughal</h3>
+                <p class="author">by William Rymple</p>
+                <p class="price">₹399</p>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <form action="checkout.html">
+                <button class="buy" type="submit">Buy Now</button>
+                </form>
+            </div>
+            <div class="book-card">
+                <img src="images/b20.jpg" alt="Book 1" >
+                <h3>The Hobbit</h3>
+                <p class="author">by J.R.R. Tolkien</p>
+                <p class="price">₹399</p>
+                <p class="rating">⭐⭐⭐⭐⭐</p>
+                <form action="checkout.html">
+                <button class="buy" type="submit">Buy Now</button>
+                </form>
+            </div>
+        </div>
+    
+    </section>
+    <!-- Footer -->
+    <footer>
+        <p>Contact: <a href="#">mybookstore@gmail.com</a> | Follow us @mybookstore2025</p>
+        <p>©2025 MyBookstore</p>
+    </footer>
+
+</body>
+</html>

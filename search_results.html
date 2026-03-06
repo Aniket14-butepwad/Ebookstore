@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Results</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      color: #333;
+    }
+
+    #results {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .book-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      width: 360px;
+      text-align: center;
+      font-size: 14px;
+      transition: transform 0.2s; 
+    }
+
+    .book-card:hover {
+      transform: scale(1.03);
+    }
+
+    .book-card img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .book-card h3 {
+      margin: 6px 0;
+      font-size: 16px;
+      color: #333;
+    }
+    .price{
+            font-size: 18px;
+            font-weight: bold;
+            color: green;
+        }
+
+    .book-card p {
+      font-size: 12px;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .book-card button {
+      padding: 6px 10px;
+      border: none;
+      border-radius: 5px;
+      background: #3740e2;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .book-card button:hover {
+      background:blue;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Search Results</h1>
+  <div id="results"></div>
+
+  <script>
+    // Dummy book data
+    const books = [
+      { 
+        name: "Alone", 
+        image: "images/alone.jpg",
+        author:" by Morgan Maxwell",
+        price:"&#8377 500"
+      },
+      { 
+        name: "Atomic Habits", 
+        image: "images/b13.jpg",
+        author: "by James Clear",
+        price:"&#8377 500"
+      },
+      { 
+        name: "Harry Potter", 
+        image: "images/b1.jpg",
+        author:" by J.K. Rowling",
+        price:"&#8377 500"
+      },
+      { 
+        name: "Think and Grow Rich", 
+        image: "images/b16.jpg",
+        author: " by Napolean Hill",
+        price:"&#8377 500"
+      },
+      { 
+        name: "The pallace of Illusion", 
+        image: "images/b2.jpg",
+        author: " by Chitra banerjee",
+        price:"&#8377 500"
+      },
+      { 
+        name: "The God of small of things", 
+        image: "images/b3.jpg",
+        author:"by Arundhati Roy ",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "The midnight Children", 
+        image: "images/b4.jpg",
+        author:"by Dan Gemeinhart",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "The white Tiger", 
+        image: "images/b5.jpg",
+        author:"by Arvind Adiga",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "Sapiens", 
+        image: "images/b6.jpg",
+        author:"by Yuval Harrari",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "Theory of everything", 
+        image: "images/b7.jpg",
+        author:"by Stephen Hawking",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "Bhagwad Geeta", 
+        image: "images/b8.jpg",
+        author:"by A.C. Bhaktivedanta Swami Prabhupada",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "The Divine Comedy", 
+        image: "images/b9.jpg",
+        author:"by Dante Alighieri",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "The Discovery of India", 
+        image: "images/b10.jpg",
+        author:"by Jawarlal Nehru",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "The constitution of India", 
+        image: "images/b11.jpg",
+        author:" ",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "An Era of Darkness", 
+        image: "images/b12.jpg",
+        author:"by shashi Kapoor",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "The 7 habits of, Highly effective people", 
+        image: "images/b14.jpg",
+        author:"by Stephen R. Covey",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "The power of Now", 
+        image: "images/b15.jpg",
+        author:"by Eckhart Tolle",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "The Gene", 
+        image: "images/b17.jpg",
+        author:"by Siddharta Mukherjee",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "Shri Rama and Sita ", 
+        image: "images/b18.jpg",
+        author:"The story behind Diwali and childern",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "The last Mughal", 
+        image: "images/b19.jpg",
+        author:"by Willaim Dalrymple",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "The hobbit", 
+        image: "images/b20.jpg",
+        author:"by J.R.R. Tolkien",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "Once upon  a Time", 
+        image: "images/child1.jpg",
+        author:"by Marthina Smith",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "We are Giants", 
+        image: "images/child2.jpg",
+        author:"by Amber Lee Dodd",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "The Book of Unseen World", 
+        image: "images/child3.jpg",
+        author:"by Jamilla Francis",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "The 3 Naughty kids", 
+        image: "images/child4.jpg",
+        author:"by Steven lovel",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "Never Ending Sky", 
+        image: "images/fiction1.jpg",
+        author:"by Joseph Kirkland",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "What we set in motion", 
+        image: "images/fiction2.jpg",
+        author:"by Stephnie Austin Edwards",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "Dark World", 
+        image: "images/fiction3.jpg",
+        author:"by J.F. Gratto",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "Memory ", 
+        image: "images/ficton4.jpg",
+        author:"by Angelina Aluda",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "Political History of Ancient India ", 
+        image: "images/hp1.jpg",
+        author:"by Hemchandra Raychaudhari",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "Ancient India Politics & Rajdharma", 
+        image: "images/hp2.jpg",
+        author:"by Sanjeev kumar sharma, chanchal, Ansuiya Nain",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "The History of Political Thought", 
+        image: "images/hp3.jpg",
+        author:"by R.N. Berki",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "The History of Life on Earth", 
+        image: "images/hp4.jpg",
+        author:"by Nathan Keighly",
+        price:"&#8377 500"
+      },  
+      { 
+        name: "The Unproposed Guy", 
+        image: "images/new1.jpg",
+        author:"by Bhavik Sarkhedi & Suhana bhambhani",
+        price:"&#8377 500"
+      }, 
+       { 
+        name: "Mother Mary comes to me", 
+        image: "images/new2.jpg",
+        author:"by Arundhati roy",
+        price:"&#8377 500"
+      },   
+       { 
+        name: "Heart Lamp", 
+        image: "images/new3.jpg",
+        author:"by Banu Mustaq",
+        price:"&#8377 500"
+      },   
+       { 
+        name: "Maratha war of independence", 
+        image: "images/new4.jpg",
+        author:"by Abhas verma",
+        price:"&#8377 500"
+      },   
+       { 
+        name: "The nature of technology", 
+        image: "images/science1.jpg",
+        author:"by W. Brian Arthur",
+        price:"&#8377 500"
+      },   
+       { 
+        name: "Computer Science & Information Technology", 
+        image: "images/science2.jpg",
+        author:"by s.s.Khandare",
+        price:"&#8377 500"
+      },   
+       { 
+        name: "The Fundamentals of Medical Laboratory", 
+        image: "images/science3.jpg",
+        author:"by Sidharth G. Maske",
+        price:"&#8377 500"
+      },   
+       { 
+        name: "Fundamentals of Space Science", 
+        image: "images/science4.jpg",
+        author:"by S.Rafi Ahamed, M.Nagarjan",
+        price:"&#8377 500"
+      },   
+       { 
+        name: "The Art of failure ", 
+        image: "images/self1.jpg",
+        author:"by Neel Burton",
+        price:"&#8377 500"
+      },   
+       { 
+        name: "Finding Your Inner self", 
+        image: "images/self2.jpg",
+        author:"by Ken Adams",
+        price:"&#8377 500"
+      },   
+       { 
+        name: "Transformative Leadership Skills", 
+        image: "images/self3.jpg",
+        author:"by Natalie Davidzon",
+        price:"&#8377 500"
+      },   
+       { 
+        name: "Emopower Yourself", 
+        image: "images/self4.jpg",
+        author:"by Jessica Lee",
+        price:"&#8377 500"
+      },   
+    ];
+
+    // Get query from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const query = urlParams.get('q') ? urlParams.get('q').toLowerCase() : "";
+
+    const resultBox = document.getElementById("results");
+    const matched = books.filter(book => book.name.toLowerCase().includes(query));
+
+    if(matched.length > 0){
+      matched.forEach(book => {
+        resultBox.innerHTML += `
+          <div class="book-card">
+            <img src="${book.image}" alt="${book.name}">
+            <h3>${book.name}</h3>
+            <p>${book.author}</p>
+            <p class="price">${book.price}</p>
+            <button onclick="window.location.href='checkout.html'">Buy Now</button>
+          </div>
+        `;
+      });
+    } else {
+      resultBox.innerHTML = "<p>❌ No book found</p>";
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>online bookstore - Categories</title>
+</head>
+<body>
+    <style>
+         body{
+             background-color: rgb(229, 248, 194);
+             margin: 0px;
+             font-family: Arial, sans-serif;
+        }
+         header {
+             text-align: center;
+             padding: 15px;
+             background: rgb(22, 22, 194);
+             position: relative;
+        }
+        header img {
+             position: absolute;
+             left: 20px;
+             top: 15px;
+             width: 150px;
+             height: auto;
+        }
+        header h1 {
+             margin: 0;
+             font-size: 70px;
+             color:white;
+             text-shadow: 4px 3px rgb(33, 0, 33);
+        }
+        .search-box {
+             margin-top: 10px;
+        } 
+        .search-box input {
+             padding: 8px;
+             width: 550px;
+             height: 15px;
+        }
+        .search-box button {
+             padding: 8px 12px;
+        }
+        nav {
+             background-color: #0059b3;
+             padding: 10px;
+             text-align: center;      
+        }
+        nav a {
+             color: white;
+             text-decoration: none;
+             margin: 0 15px;
+             font-weight: bold;
+             cursor: pointer;
+             font-size: 20px;
+        }
+        section{
+             flex: 2;
+             padding: 20px;
+             background-color: white;
+             margin: 10px;
+             border-radius: 10px;
+             box-shadow: 0 0 10px rgba(0,0,0,0.1);      
+        }
+         .book-container{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 30px;
+         }
+         .book-card{
+            background-color: white;
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            text-align: center;
+            transition: transform 0.3s ease;
+         }
+       .book-card:hover{
+            transform: scale(1.05);
+        }
+        .book-card img{
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        .book-card h3{
+            font-size: 20px;
+            margin: 10px 0 5px;
+        }
+        .author{
+            font-size: 16px;
+            color: gray;
+        }
+        .price{
+            font-size: 18px;
+            font-weight: bold;
+            color: green;
+        }
+        .buy{
+            cursor: pointer;
+            background-color: blue;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        footer{
+             background-color: darkblue;
+             color: white;
+             margin-top: 0px;
+             margin-bottom: 0px;
+             text-align: center;
+             padding: 10px;
+        }
+        footer a{
+          color: yellow;
+          text-decoration: none;
+        }
+        
+    </style>
+     <header>
+        <img src="images/logo1.png" alt=" " height="175px">
+        <h1 > Mybookstore</h1>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search books...">
+            <button onclick="goToSearch()">Search</button>
+        </div>
+    </header>
+
+    <script>
+      function goToSearch() {
+        let query = document.getElementById("searchInput").value.trim();
+        if(query !== "") {
+        // Redirect to search-results.html with query as URL parameter
+            window.location.href = "search_results.html?q=" + encodeURIComponent(query);
+        }
+    }
+    </script>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="categories.html">Categories</a>
+            <a href="best_sellers.html">Best-Sellers</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <section>
+            <h1 style="font-size: 28px;">Explore by Categories :-</h1>
+            <p style="font-size: 20px;">Choose from widee range of genres and start reading today.</p>
+            <img style="display: block; margin: 20px auto; padding: 10px 20px; height:700px; width: 1400px; margin-bottom: 5px;" src="images/fiction.jpg" alt="  " >
+        </section>
+        <section style="background-color: lightyellow;">
+            <h1 style="font-size: 30px;">📖 Fiction</h1>
+            <p style="font-size: 20px;">
+                 Fiction books open the door to a world of imagination, where characters, places, and events are born from creativity. They allow readers to escape reality and dive into magical lands, thrilling adventures, or futuristic worlds. Every story brings suspense, emotions, and unforgettable experiences that stay with the reader. From mysterious tales that keep you guessing to romances that touch the heart, fiction offers endless variety. Genres like fantasy, science fiction, historical fiction, and drama all fall under this category. These books not only entertain but also inspire deep thinking and creativity. They let us experience lives and situations we may never encounter in reality. Fiction strengthens our imagination and emotional understanding. With every page, readers travel to new realms and meet unforgettable characters. That is why fiction remains one of the most loved and timeless forms of literature.
+            </p>
+               <div class="book-container">
+                    <div class="book-card">
+                         <img onclick="goTosearch()" src="images/fiction1.jpg" alt="Book 1">
+                         <h3>Never Endinng Sky</h3>
+                         <p class="author">by Joseph kirkland</p>
+                         <p class="price">&#8377 279</p>
+                         <form action="checkout.html">
+                         <button class="buy" type="submit">Buy Now</button>
+                         </form>
+                    </div>
+          
+                    <div class="book-card">
+                         <img src="images\fiction2.jpg" alt="Book 2">
+                         <h3>What we set in Motion</h3>
+                         <p class="author">by Austin Edwards</p>
+                         <p class="price">&#8377 279</p>
+                         <form action="checkout.html">
+                         <button class="buy" type="submit">Buy Now</button>
+                         </form>
+                    </div>
+                    <div class="book-card">
+                         <img src="images/fiction3.jpg" alt="Book 3">
+                         <h3>Dark World</h3>
+                         <p class="author">by j.f gratto</p>
+                         <p class="price">&#8377 279</p>
+                         <form action="checkout.html">
+                         <button class="buy" type="submit">Buy Now</button>
+                         </form>
+                    </div>
+                    <div class="book-card">
+                         <img src="images/fiction4.jpg" alt="Book 4">
+                         <h3>Memory, by Angelina Aludo</h3>
+                         <p class="author">by Angelina Aludo</p>
+                         <p class="price">&#8377 279</p>
+                         <form action="checkout.html">
+                         <button class="buy" type="submit">Buy Now</button>
+                         </form>
+                    </div>
+               </div>
+            
+            <button style="display: block; margin: 20px auto; padding: 10px 20px;border-radius: 10px; font-size: 16px; margin-bottom: 5px;cursor: pointer;">View more</button> <br><br><br>
+        </section>
+        <section >
+            <h1 style="font-size: 30px;">🔬 Science & Technology</h1>
+            <p style="font-size: 20px;">
+                 Science and Technology books open the mind to the wonders of discovery and innovation. They explain the principles of the natural world, from atoms to galaxies, in a way that sparks curiosity. These books cover inventions, experiments, and breakthroughs that have shaped human life. They introduce readers to great scientists, engineers, and their groundbreaking ideas. With clear explanations, they simplify complex concepts of physics, chemistry, biology, and more. Technology books highlight modern advancements in computers, AI, space, and engineering. They inspire readers to think critically and explore new possibilities for the future. Such books not only build knowledge but also encourage problem-solving skills. They bridge the gap between imagination and real-world application. Science and Technology books remain essential for learners, innovators, and anyone eager to understand how the world works.
+            </p>
+               <div class="book-container">
+                    <div class="book-card">
+                         <img src="images/science1.jpg" alt="Boook 1">
+                         <h3>The Nature of Technology</h3>
+                         <p class="author">by W.Brian Arthur</p>
+                         <p class="price"> &#8377 279</p>
+                         <form action="checkout.html">
+                         <button class="buy" type="submit">Buy Now</button>
+                         </form>
+                    </div>
+                    <div class="book-card">
+                         <img src="images\science2.jpg" alt="Book 2">
+                         <h3>Computer Science & Information Technology </h3>
+                         <p class="author"> by S.S.Khandre</p>
+                         <p class="price"> &#8377 279</p>
+                         <form action="checkout.html">
+                         <button class="buy" type="submit">Buy Now</button>
+                         </form>
+                    </div>
+                    <div class="book-card">
+                         <img src="images/science3.jpg" alt="Book 3">
+                         <h3>The Fundamentals of Medical Laboratory Technology </h3>
+                         <p class="author">by Sidhharth G. Mask</p>
+                         <p class="price">&#8377 279</p>
+                         <form action="checkout.html">
+                         <button class="buy" type="submit">Buy Now</button>
+                         </form>
+                    </div>
+                    <div class="book-card">
+                         <img src="images/science4.jpg" alt="Book 4">
+                         <h3>Fundamental of Space Science,</h3>
+                         <p class="author"> by S.Rafi Ahamed & M.Nagarjan</p>
+                         <p class="price">&#8377 279</p>
+                         <form action="checkout.html">
+                         <button class="buy" type="submit">Buy Now</button>
+                         </form>
+                    </div>
+               </div>
+            <button style="display: block; margin: 20px auto; padding: 10px 20px; font-size: 16px;border-radius: 10px; margin-bottom: 5px;cursor: pointer;">View more</button> <br><br><br>
+        </section>
+        <section>
+            <h1 style="font-size: 30px;">🌍 History & Politics</h1>
+            <p style="font-size: 20px;">
+                 History and Politics books take readers on a journey through the past and present of human society. They reveal the rise and fall of civilizations, great leaders, and turning points that shaped the world. These books bring alive stories of wars, revolutions, cultures, and traditions that define humanity. Political books explore governance, ideologies, policies, and the struggle for power and justice. They help readers understand how decisions of the past influence the present and future. From ancient kingdoms to modern democracies, such books highlight lessons of leadership and change. They encourage critical thinking about society, freedom, and responsibility. Readers gain insights into struggles for equality, independence, and human rights. With every page, they connect history’s wisdom with today’s challenges. History and Politics books inspire awareness, knowledge, and a deeper understanding of the world we live in.     
+            </p>
+               <div class="book-container">
+                    <div class="book-card">
+                         <img src="images/hp1.jpg" alt="Book 1">
+                         <h3>Political History of Ancient India,</h3>
+                         <p class="author"> by Hemchandra Raychaudhari</p>
+                         <p class="price">&#8377 279</p>
+                         <form action="checkout.html">
+                         <button class="buy" type="submit">Buy Now</button>
+                         </form>
+                    </div>
+                    <div class="book-card">
+                         <img  style="width: 30   0px;height: 500px;" src="images\hp2.jpg" alt="Book 2" >
+                         <h3>Ancient Indian Politics & RajaDharma</h3>
+                         <p class="author">by Sanjeev Kumar Sharma,Chanchal,Ansuiya Nain</p>
+                         <p class="price">&#8377 279</p>
+                         <form action="checkout.html">
+                         <button class="buy" type="submit">Buy Now</button>
+                         </form>
+                    </div>
+                    <div class="book-card">
+                         <img src="images/hp3.jpg" alt="Book 3">
+                         <h3>The History of Political Thought</h3>
+                         <p class="author"> by R.N. Berki</p>
+                         <p class="price">&#8377 279</p>
+                         <form action="checkout.html">
+                         <button class="buy" type="submit">Buy Now</button>
+                         </form>
+                    </div>
+                    <div class="book-card">
+                         <img src="images/hp4.jpg" alt="Book 4">
+                         <h3>The History of Life on Earth, </h3>
+                         <p class="author">by Nathan Keighley</p>
+                         <p class="price">&#8377 279</p>
+                         <form action="checkout.html">
+                         <button class="buy" type="submit">Buy Now</button>
+                         </form>
+                    </div>
+               </div>
+            <button style="display: block; margin: 20px auto; padding: 10px 20px; font-size: 16px; margin-bottom: 5px; cursor: pointer;border-radius: 10px;">View more</button> <br><br><br>
+        </section>
+        <section>
+               <h1 style="font-size: 30px;">💡 Self-Help</h1>
+               <p style="font-size: 20px;">
+                 Self-Help books guide readers toward personal growth, confidence, and success in life. They provide practical advice on improving habits, mindset, and productivity. These books inspire positive thinking and help people overcome challenges. Many focus on building self-confidence, emotional balance, and inner strength. They offer tools for better relationships, career growth, and achieving goals. With real-life examples and step-by-step methods, they make change possible. Self-help books encourage readers to unlock their hidden potential. They teach how to manage stress, stay motivated, and live with purpose. Every page gives motivation to take small steps toward big transformations. Self-Help books remain trusted companions for anyone striving to improve their life.
+               </p>
+               <div class="book-container">
+                    <div class="book-card">
+                         <img src="images/self1.jpg" alt="Book 1">
+                         <h3>The Art of Failure, </h3>
+                         <p class="author"> by NEEL BURTON</p>
+                         <p class="price">&#8377 279 </p>
+                         <form action="checkout.html">
+                         <button class="buy" type="submit">Buy Now</button>
+                         </form>
+                    </div>
+                    <div class="book-card">
+                         <img src="images\self2.jpg" alt="Book 2">
+                         <h3>Finding Your Inner Self, </h3>
+                         <p class="author">by Ken Adams</p>
+                         <p class="price">&#8377 279 </p>
+                         <form action="checkout.html">
+                         <button class="buy" type="submit">Buy Now</button>
+                         </form>
+                    </div>
+                    <div class="book-card">
+                         <img src="images/self3.jpg" alt="Book 3">
+                         <h3>Transformative Leadership skills,</h3>
+                         <p class="author"> by Natalie Davidzon</p>
+                         <p class="price">&#8377 279</p>
+                         <form action="checkout.html">
+                         <button class="buy" type="submit">Buy Now</button>
+                         </form>
+                    </div>
+                    <div class="book-card">
+                         <img src="images/self4.jpg" alt="Book 4">
+                         <h3>Empower YourSelf,</h3>
+                         <p class="author"> by Jessica Lee</p>
+                         <p class="price">&#8377 279</p>
+                         <form action="checkout.html">
+                         <button class="buy" type="submit">Buy Now</button>
+                         </form>
+                    </div>
+               </div> 
+            <button style="display: block; margin: 20px auto; padding: 10px 20px; font-size: 16px; margin-bottom: 5px; cursor: pointer;border-radius: 10px;">View more</button> <br><br><br>
+        </section>
+       
+        <section  style="background-color: lightblue;">
+            <h1 style="font-size: 30px;">👶 Childrens books</h1>
+            <p style="font-size: 20px;">
+                Children’s books open the world of imagination and learning for young readers. They are filled with colorful stories, simple language, and engaging illustrations. These books introduce kids to values like kindness, honesty, and friendship. From fairy tales and fables to adventure and fantasy, they make reading a joyful experience. Many children’s books also teach basic skills like numbers, letters, and problem-solving. They help develop creativity, curiosity, and a love for reading from an early age. Characters in these stories become friends and role models for kids. With every story, children learn life lessons in fun and playful ways. They also strengthen memory, imagination, and emotional understanding. Children’s books are not just stories—they are stepping stones to growth, learning, and happiness.
+            </p>
+               <div class="book-container">
+                    <div class="book-card">
+                         <img src="images/child1.jpg" alt=""height="500px" width="350px">
+                         <h3>The Art of Failure, </h3>
+                         <p class="author">by NEEL BURTON</p>
+                         <p class="price">&#8377 279</p>
+                         <form action="checkout.html">
+                         <button class="buy" type="submit">Buy Now</button>
+                         </form>
+                    </div>
+                    <div class="book-card">
+                         <img src="images\child2.jpg" alt=""height="500px" width="350px">
+                         <h3>Finding Your Inner Self,</h3>
+                         <p class="author"> by Ken Adams</p>
+                         <p class="price">&#8377 279</p>
+                         <form action="checkout.html">
+                         <button class="buy" type="submit">Buy Now</button>
+                         </form>
+                    </div>
+                    <div class="book-card">
+                         <img src="images/child3.jpg" alt=""height="500px" width="350px">
+                         <h3>Transformative Leadership skills, </h3>
+                         <p class="author">by Natalie Davidzon</p>
+                         <p class="price">&#8377 279</p>
+                         <form action="checkout.html">
+                         <button class="buy" type="submit">Buy Now</button>
+                         </form>
+                    </div>
+                    <div class="book-card">
+                         <img src="images/child4.png" alt=""height="500px" width="350px">
+                         <h3>Empower YourSelf</h3>
+                         <p class="author"> by Jessica Lee</p>
+                         <p class="price">&#8377 279</p>
+                         <form action="checkout.html">
+                         <button class="buy" type="submit">Buy Now</button>
+                         </form>
+                    </div>
+               </div>  
+            <button style="display: block; margin: 20px auto; padding: 10px 20px; font-size: 16px;border-radius: 10px; margin-bottom: 5px;cursor: pointer;">View more</button> <br><br><br>
+        </section>
+        <footer>
+                <p>Contact: <a href="#">mybookstore@gmail.com</a>|Follow us on @mubookstore2025</p>
+        <p>©2025 MYbookstore</p>
+    </footer>
+</body>
+</html>
